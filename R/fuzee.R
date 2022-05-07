@@ -169,7 +169,7 @@ export_dataset = function(dataset, cookie){
     stop('See above', )
   }  
   
-  data = read.csv(text=content(rGet, 'text'), encoding = 'UTF-8')
+  data = read.csv(text = httr::content(rGet, 'text'), encoding = 'UTF-8')
   
   success('Done!')
   return(data)
