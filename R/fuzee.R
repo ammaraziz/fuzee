@@ -161,7 +161,7 @@ export_dataset = function(dataset, cookie){
   rGet <- httr::GET(url = url,
               httr::set_cookies("FUZEEUSERAUTH" = cookie,
                           "FUZEESTAYLOGGEDIN" = "YES"),
-              httr:progress())
+              httr::progress())
   # error handling
   httr::stop_for_status(rGet, "Authenticate")
   if( nrow(cookies(rGet)) == 0){
