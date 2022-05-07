@@ -29,6 +29,8 @@ First authenticate using `auth` then download the datasheet with `export_data`:
     cookie = auth(username = email, password = password)
     samples = export_dataset(dataset = "Samples - Received", cookie = cookie)
 
+`export_datasets()` returns a dataframe.
+
 Note: The `dataset` option must match one of the following:
 
 	Samples - Storage
@@ -52,6 +54,7 @@ Use `get_codes()` to see this list.
 ### Future Improvments:
 
 Support direct querying of:
-	~ Worksheets > Genetic Analysis > Show All
-	~ Shipments > Search Shipments
-	~ Shipments > Search Samples
+
+- Worksheets > Genetic Analysis > Show All
+- Shipments > Search Shipments
+- Shipments > Search Samples
