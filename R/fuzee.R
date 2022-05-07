@@ -1,13 +1,3 @@
-#pacman::p_load("httr", "xml2", "openssl")
-
-#force the user to generate md5 hash of password using openssl::md5()
-
-email = "ammar.aziz@influenzacentre.org"
-password = "3268b8970e6a89c3233e134ccfeb6b42"
-
-#fingerprint = "c954544616c6e8d36d8c38b4a5250bcc"
-#device_id = "HelfDumcqBGBO89Z"
-
 success = function(text) { 
   write(paste0("\033[0;32m  -> ", text, "\033[0m"), stdout())
 }
@@ -189,6 +179,7 @@ export_dataset = function(dataset, cookie){
 #' Replicates the 'Export all' button.
 #' @param cookie for authentication, returned by `auth` function
 #' @param file a character string naming a file
+#' @export
 #' @examples
 #' cookie = auth(username = 'moe.doe@@email.com',
 #'               password = 'md5hash') 
