@@ -134,7 +134,7 @@ auth = function(username, password) {
                 httr::set_cookies("FUZEESTAYLOGGEDIN" = "YES"),
                 multipart = FALSE)
   httr::stop_for_status(rPost, "Authenticate")
-  if( nrow(cookies(rPost)) == 0 ){
+  if( nrow(httr::cookies(rPost)) == 0 ){
     stop("Failed to Authenticate, No cookies were returned")
   }
   
@@ -191,7 +191,7 @@ export_all = function(cookie, file) {
   warn('Downloading....')
   
   # send request
-  rGet <- httr::GET(url, set_cookies("FUZEEUSERAUTH" = cookie,
+  rGet <- httr::GET(url, httr::set_cookies("FUZEEUSERAUTH" = cookie,
                                "FUZEESTAYLOGGEDIN" = "YES"),
               httr::progress(),
               httr::write_disk(file))
