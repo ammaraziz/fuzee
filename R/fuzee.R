@@ -1,3 +1,4 @@
+# functions for pretty printing to console
 success = function(text) { 
   write(paste0("\033[0;32m  -> ", text, "\033[0m"), stdout())
 }
@@ -127,18 +128,18 @@ auth = function(username, password) {
   rPost = httr::POST("https://my.fuzee.com/login", 
                 body = login, 
                 encode = "form", 
-                add_headers(.headers = c(
+                httr::add_headers(.headers = c(
                   'User-Agent'= 'curl/7.80.0',
                   "Accept" = "*/*")),
-                set_cookies("FUZEESTAYLOGGEDIN" = "YES"),
+                httr::set_cookies("FUZEESTAYLOGGEDIN" = "YES"),
                 multipart = FALSE)
-  stop_for_status(rPost, "Authenticate")
-  if( nrow(cookies(rPost)) == 0){
+  httr::stop_for_status(rPost, "Authenticate")
+  if( nrow(cookies(rPost)) == 0 ){
     stop("Failed to Authenticate, No cookies were returned")
   }
   
   success('Authentication Successful')
-  return(cookies(rPost)$value)
+  return(httr::cookies(rPost)$value)
 }
 
 #' Export Datasheet
@@ -158,11 +159,11 @@ export_dataset = function(dataset, cookie){
   warn('Data Request Sent....')
   warn('Downloading... this may take a while')
   rGet <- httr::GET(url = url,
-              set_cookies("FUZEEUSERAUTH" = cookie,
+              httr::set_cookies("FUZEEUSERAUTH" = cookie,
                           "FUZEESTAYLOGGEDIN" = "YES"),
-              progress())
+              httr:progress())
   # error handling
-  stop_for_status(rGet, "Authenticate")
+  httr::stop_for_status(rGet, "Authenticate")
   if( nrow(cookies(rGet)) == 0){
     error("Get request failed. No cookies were returned")
     stop('See above', )
@@ -192,11 +193,11 @@ export_all = function(cookie, file) {
   # send request
   rGet <- httr::GET(url, set_cookies("FUZEEUSERAUTH" = cookie,
                                "FUZEESTAYLOGGEDIN" = "YES"),
-              progress(),
-              write_disk(file))
+              httr::progress(),
+              httr::write_disk(file))
   
   # error handling
-    stop_for_status(rGet, "Authenticate")
+    httr::stop_for_status(rGet, "Authenticate")
     if( nrow(cookies(rGet)) == 0){
       error("Get request failed. No cookies were returned")
       stop('See above')
