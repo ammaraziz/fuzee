@@ -92,7 +92,7 @@ generate_fingerprint = function(){
     a <- do.call(paste0, replicate(5, sample(LETTERS, n, TRUE), FALSE))
     paste0(a, sprintf("%04d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
   }
-  return(md5(generate_random_string(1)))
+  return(openssl::md5(generate_random_string(1)))
 }
 
 #' Generate 16-bit string by random sampling letters and numbers
