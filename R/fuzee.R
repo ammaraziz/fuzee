@@ -120,6 +120,7 @@ generate_device_id = function(){
 #' @param username String - Email used to log into fuzee
 #' @param password String -  md5 hash of password, use openssl::md5 to generate hash
 #' @return HTTP cookie used for GET requests downstream 
+#' @export
 #' @examples 
 #' cookie = auth(username = 'moe.dong@@email.com', 
 #'               password = 'd676b8d41fa96fd07bebe8c987513ab8')
@@ -159,6 +160,7 @@ auth = function(username, password) {
 #' @return a dataframe 
 #' @seealso `codes()` to get a list of sheet names
 #' @seealso `auth()` to authenticate with fuzee
+#' @export
 #' @examples 
 #' batches = export_dataset(dataset = 'batches', cookie = cookie)
 export_dataset = function(dataset, cookie){
