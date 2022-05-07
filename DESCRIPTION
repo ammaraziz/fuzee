@@ -1,4 +1,4 @@
-Package: Fuzee
+Package: fuzee
 Title: R interface for fuzee database
 Version: 0.0.0.1000
 Authors@R: 
