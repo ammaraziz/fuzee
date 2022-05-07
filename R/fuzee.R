@@ -124,7 +124,7 @@ auth = function(username, password) {
   
   warn('Authenticating....')
   
-  rPost = POST("https://my.fuzee.com/login", 
+  rPost = httr::POST("https://my.fuzee.com/login", 
                 body = login, 
                 encode = "form", 
                 add_headers(.headers = c(
@@ -157,7 +157,7 @@ export_dataset = function(dataset, cookie){
   url = generate_data_url(dataset)
   warn('Data Request Sent....')
   warn('Downloading... this may take a while')
-  rGet <- GET(url = url,
+  rGet <- httr::GET(url = url,
               set_cookies("FUZEEUSERAUTH" = cookie,
                           "FUZEESTAYLOGGEDIN" = "YES"),
               progress())
@@ -190,7 +190,7 @@ export_all = function(cookie, file) {
   warn('Downloading....')
   
   # send request
-  rGet <- GET(url, set_cookies("FUZEEUSERAUTH" = cookie,
+  rGet <- httr::GET(url, set_cookies("FUZEEUSERAUTH" = cookie,
                                "FUZEESTAYLOGGEDIN" = "YES"),
               progress(),
               write_disk(file))
