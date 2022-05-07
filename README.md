@@ -7,19 +7,16 @@ Interface to Fuzee API
     devtools::install_github("ammaraziz/fuzee")
 
 # Usage
-
 ### Hash your password
 To log into fuzee, create a hash of your password:
 
     openssl::md5("mypassword")
     % [1] "34819d7beeabb9260a5c854bc85b3e44"
-
 Store this as `password`:
 
     password = "34819d7beeabb9260a5c854bc85b3e44"
 
 ### Export All button
-
     fuzee(username = 'moe.doe@@email.com', 
           password = password,
           file = 'Desktop/all.zip')
@@ -27,7 +24,6 @@ Store this as `password`:
 Where `file` is the directory/filename to save the zip file.
 
 ### Download individual data sheets
-
 First authenticate using `auth` then download the datasheet with `export_data`:
 
     cookie = auth(username = email, password = password)
@@ -52,3 +48,10 @@ Note: The `dataset` option must match one of the following:
 	VirusCulture 
 
 Use `get_codes()` to see this list.
+
+### Future Improvments:
+
+Support direct querying of:
+	~ Worksheets > Genetic Analysis > Show All
+	~ Shipments > Search Shipments
+	~ Shipments > Search Samples
