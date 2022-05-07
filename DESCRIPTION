@@ -1,0 +1,14 @@
+Package: Fuzee
+Title: R interface for fuzee database
+Version: 0.0.0.1000
+Authors@R: 
+    person("Ammar", "Aziz", , "ammar.aziz@mh.org.au", role = c("aut", "cre"))
+Description: A set of functions for interacting programmatically with the Fuzee database. Created for internal use by WHOCC
+License: `use_mit_license()`
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports:
+    httr,
+    openssl,
+    xml2
