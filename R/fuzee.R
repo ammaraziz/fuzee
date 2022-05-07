@@ -164,7 +164,7 @@ export_dataset = function(dataset, cookie){
               httr::progress())
   # error handling
   httr::stop_for_status(rGet, "Authenticate")
-  if( nrow(cookies(rGet)) == 0){
+  if( nrow(httr::cookies(rGet)) == 0){
     error("Get request failed. No cookies were returned")
     stop('See above', )
   }  
