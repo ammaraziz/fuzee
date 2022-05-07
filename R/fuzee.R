@@ -154,15 +154,15 @@ auth = function(username, password) {
 #' 
 #' Export a specific datasheet into a dataframe
 #' A GET request is sent to fuzee for downloading a specific datasheet.
-#' @param sheet_name String - Name of the sheet data to download. use `codes()` to get a complete list
+#' @param dataset String - Name of the sheet data to download. use `codes()` to get a complete list
 #' @param cookie String - cookie for authentication returned by `auth`
 #' @return a dataframe 
 #' @seealso `codes()` to get a list of sheet names
 #' @seealso `auth()` to authenticate with fuzee
 #' @examples 
-#' batches = export_datasheet(sheetname = 'batches', cookie = cookie)
-export_datasheet = function(sheet_name, cookie){
-  url = generate_data_url(sheet_name)
+#' batches = export_dataset(dataset = 'batches', cookie = cookie)
+export_dataset = function(dataset, cookie){
+  url = generate_data_url(dataset)
   warn('Data Request Sent....')
   warn('Downloading... this may take a while')
   rGet <- GET(url = url,
@@ -236,9 +236,4 @@ fuzee = function(username, password, file) {
   cookie = auth(username, password)
   export_all(cookie, file)
 }
-
-# cookie = auth(username = email, password = password)
-# samples = export_data("Samples - Received", cookie)
-# all = export_all(cookie, "Desktop/all.zip")
-# fuzee(username = email, password = password, file = "Desktop/all2.zip")
   
