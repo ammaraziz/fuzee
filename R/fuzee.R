@@ -230,4 +230,28 @@ fuzee = function(username, password, file) {
   cookie = auth(username, password)
   export_all(cookie, file)
 }
+
+# untested
+get_genetic_batch = function(batch_number, cookie) {
+  base_url = 'http://my.fuzee.com/ajax?c=DataSet&s=getData&code=Q_000000000x2r03s&start=0&page_size=1000&params[batch]='
+  url = paste0(base_url, batch_number)
+  
+  warn('Data Request Sent....')
+  rGet <- httr::GET(url = url,
+                    httr::set_cookies("FUZEEUSERAUTH" = cookie,
+                                      "FUZEESTAYLOGGEDIN" = "YES"),
+                    httr::progress())
+  # error handling
+  httr::stop_for_status(rGet, "Authenticate")
+  if( nrow(httr::cookies(rGet)) == 0){
+    error("Get request failed. No cookies were returned")
+    stop('See above', )
+  }  
+  
+  json = read.csv(text = httr::content(rGet, 'application/json', encoding = 'UTF-8'))
+  data = json$rows
+  
+  success('Done!')
+  return(data)
+}
   
