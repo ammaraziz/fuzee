@@ -23,8 +23,8 @@ Store this as `password`:
 
 Where `file` is the directory/filename to save the zip file.
 
-### Download individual data sheets
-First authenticate using `auth` then download the datasheet with `export_data`:
+### Download individual datasets
+First authenticate using `auth` then download the dataset with `export_dataset`:
 
     cookie = auth(username = email, password = password)
     samples = export_dataset(dataset = "Samples - Received", cookie = cookie)
