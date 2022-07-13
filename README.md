@@ -9,7 +9,7 @@ Interface to Fuzee API
 # Usage
 ### Hash your password
 
-1. Generate a hash of your password. Type the following into your console:
+Generate a hash of your password. Type the following into your console:
 
      openssl::md5("mypassword")
 
