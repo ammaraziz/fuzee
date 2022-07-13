@@ -23,11 +23,13 @@ Copy this hash, store it in a variable called `password`:
 
 Do not store your password in plain text. Use the hashed string.
 
+
 ### Download All Data
+![ExportAll](man/exportall.png)
 
 To download all data in a zip format, similar to the `Export All` button on Fuzee:
 
-    fuzee(username = 'moe.doe@@email.com', 
+    fuzee(username = 'moe.doe@email.com', 
           password = password,
           file = 'Desktop/all.zip')
 
@@ -39,13 +41,16 @@ To uncompress the zip file in R, run the following:
 		exdir = "location/to/extract",
 		overwrite = TRUE)
 
+
 ### Download individual datasets
+![ExportAll](man/batches.png)
+
 First authenticate using `auth` then download the dataset with `export_dataset`:
 
     cookie = auth(username = email, password = password)
     samples = export_dataset(dataset = "Samples - Received", cookie = cookie)
 
-`export_datasets()` returns a dataframe.
+`export_datasets()` returns a dataframe directly in R.
 
 Note: The `dataset` option must match one of the following:
 
