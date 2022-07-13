@@ -8,20 +8,36 @@ Interface to Fuzee API
 
 # Usage
 ### Hash your password
-To log into fuzee, create a hash of your password:
 
-    openssl::md5("mypassword")
+1. Generate a hash of your password. Type the following into your console:
+
+     openssl::md5("mypassword")
+
+Where `mypassword` is the password to log into fuzee. Output will look like:
+
     % [1] "34819d7beeabb9260a5c854bc85b3e44"
-Store this as `password`:
+
+Copy this hash, store it in a variable called `password`:
 
     password = "34819d7beeabb9260a5c854bc85b3e44"
 
-### Export All button
+Do not store your password in plain text. Use the hashed string.
+
+### Download All Data
+
+To download all data in a zip format, similar to the `Export All` button on Fuzee:
+
     fuzee(username = 'moe.doe@@email.com', 
           password = password,
           file = 'Desktop/all.zip')
 
-Where `file` is the directory/filename to save the zip file.
+Where `file` is the directory/filename to save the zip file. 
+
+To uncompress the zip file in R, run the following: 
+
+    unzip(zipfile = "location/to/zipfile",
+		exdir = "location/to/extract",
+		overwrite = TRUE)
 
 ### Download individual datasets
 First authenticate using `auth` then download the dataset with `export_dataset`:
