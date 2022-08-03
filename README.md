@@ -43,7 +43,7 @@ To uncompress the zip file in R, run the following:
 
 
 ### Download individual datasets
-![ExportAll](man/batches.png)
+![Batches](man/batches.png)
 
 First authenticate using `auth` then download the dataset with `export_dataset`:
 
