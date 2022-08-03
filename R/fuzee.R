@@ -185,7 +185,7 @@ export_dataset = function(dataset, cookie){
 #' cookie = auth(username = 'moe.doe@@email.com',
 #'               password = 'md5hash') 
 #' export_all(cookie = cookie, file = '~/Desktop/all.zip')
-export_all = function(cookie, file) {
+export_all = function(cookie, file, overwrite = FALSE) {
   url = 'https://my.fuzee.com/ajax?c=file&s=exportByCategory&code=_000000000x2r4f7'
   warn('Request Sent....')
   warn('Downloading....')
@@ -194,7 +194,7 @@ export_all = function(cookie, file) {
   rGet <- httr::GET(url, httr::set_cookies("FUZEEUSERAUTH" = cookie,
                                "FUZEESTAYLOGGEDIN" = "YES"),
               httr::progress(),
-              httr::write_disk(file))
+              httr::write_disk(file, overwrite))
   
   # error handling
     httr::stop_for_status(rGet, "Authenticate")
