@@ -226,9 +226,9 @@ export_all = function(cookie, file, overwrite = FALSE) {
 #' fuzee(username = 'moe.doe@@email.com', 
 #'        password = 'd676b8d41fa96fd07bebe8c987513ab8',
 #'        file = 'Desktop/all.zip')
-fuzee = function(username, password, file) {
+fuzee = function(username, password, file, overwrite = FALSE) {
   cookie = auth(username, password)
-  export_all(cookie, file)
+  export_all(cookie, file, overwrite)
 }
 
 # untested
